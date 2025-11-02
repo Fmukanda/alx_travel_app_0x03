@@ -1,0 +1,41 @@
+API Testing with Postman
+Here are the key endpoints to test:
+
+Listings Endpoints:
+GET /api/listings/ - List all listings (public)
+
+GET /api/listings/?city=Paris&min_price=100 - Filter listings
+
+POST /api/listings/ - Create new listing (authenticated)
+
+PUT /api/listings/{id}/ - Update listing (host only)
+
+DELETE /api/listings/{id}/ - Delete listing (host only)
+
+Bookings Endpoints:
+GET /api/bookings/ - Get user's bookings (authenticated)
+
+POST /api/bookings/ - Create booking (authenticated)
+
+POST /api/bookings/{id}/cancel/ - Cancel booking (guest only)
+
+POST /api/bookings/{id}/confirm/ - Confirm booking (host only)
+
+Swagger Documentation:
+GET /swagger/ - Interactive API documentation
+
+# Run migrations
+python manage.py makemigrations
+python manage.py migrate
+
+# Start Celery worker
+celery -A your_project worker --loglevel=info
+
+# Start Celery beat for periodic tasks
+celery -A your_project beat --loglevel=info
+
+# Run tests
+python manage.py test listings.tests_payment
+
+GET /redoc/ - Alternative documentation
+
